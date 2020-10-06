@@ -11,8 +11,9 @@ for (var i = 0; i < cells.length; i++) {
         if (clicked_node) {
             clicked_node.removeAttribute("style");
         } 
-        this.style.backgroundColor = "#000000";
-        this.style.color = 'white';
+        // this.style.backgroundColor = "#000000";
+        this.style.backgroundColor = getComputedStyle(document.body).getPropertyValue('--box');
+        this.style.color = getComputedStyle(document.body).getPropertyValue('--text');
         clicked_node = this;
     });
 }
@@ -23,7 +24,6 @@ function addText() {
         text.textContent = input.value;
         text.style.color = color.value;
         clicked_node.appendChild(text);
-        // clicked_node.innerHTML = clicked_node.innerHTML + '<span>' + input.value + '</span>';
         input.value = '';
     }
 }
@@ -44,3 +44,12 @@ for(var i=0; i<themeButton.length; ++i) {
         document.body.setAttribute('class', e.target.id)
     }, false)
 }
+
+for(var i=0; i<themeButton.length; ++i) {
+    themeButton[i].addEventListener('click', function() {
+        if (clicked_node) {
+            clicked_node.style.backgroundColor = getComputedStyle(document.body).getPropertyValue('--box');
+            clicked_node.style.color = getComputedStyle(document.body).getPropertyValue('--text');
+        };
+    });
+};

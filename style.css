@@ -62,16 +62,14 @@ body > h1{
 } 
 
 .date{
+    border-radius: 10%;
     text-align: top;
     vertical-align: top;
 }
 
 .date:hover {
-    background-color: rgba(0, 0, 0, 0.103);
-}
-
-.date:focus {
-    outline: none;
+    /* background-color: rgba(0, 0, 0, 0.103); */
+    background-color: var(--hover);
 }
 
 /*****************Themes*****************/
