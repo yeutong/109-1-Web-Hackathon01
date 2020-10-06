@@ -19,7 +19,11 @@ for (var i = 0; i < cells.length; i++) {
 
 function addText() {
     if (clicked_node) {
-        clicked_node.textContent += '\n' + input.value;
+        var text = document.createElement('DIV');
+        text.textContent = input.value;
+        text.style.color = color.value;
+        clicked_node.appendChild(text);
+        // clicked_node.innerHTML = clicked_node.innerHTML + '<span>' + input.value + '</span>';
         input.value = '';
     }
 }
@@ -29,9 +33,8 @@ button.addEventListener("click", addText);
 input.addEventListener("keydown", ({key}) => {
     if (key === "Enter") {
         addText();
-    }
-})
-
+    };
+});
 
 
 //Sets the page's theme. No need to modify
