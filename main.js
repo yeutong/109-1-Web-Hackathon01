@@ -2,14 +2,35 @@ var cells = document.getElementsByClassName("date")
 var input = document.getElementById("cal-input")
 var color = document.getElementById("cal-color")
 var button = document.getElementById("cal-button")
+var clicked_node;
 input.value = ''
 color.value = '#b0b0b0'
 
+for (var i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('click', function() {
+        if (clicked_node) {
+            clicked_node.removeAttribute("style");
+        } 
+        this.style.backgroundColor = "#000000";
+        this.style.color = 'white';
+        clicked_node = this;
+    });
+}
 
+function addText() {
+    if (clicked_node) {
+        clicked_node.textContent += '\n' + input.value;
+        input.value = '';
+    }
+}
 
+button.addEventListener("click", addText);
 
-
-
+input.addEventListener("keydown", ({key}) => {
+    if (key === "Enter") {
+        addText();
+    }
+})
 
 
 
